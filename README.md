@@ -2,6 +2,8 @@
 
 参加しているDiscordのボイスチャンネルで、新しく始まった画面共有を自動視聴するVencord用UserPluginです。
 
+![AutoWatchStreamの導入手順](assets/setup-guide.svg)
+
 ## 機能
 
 - 同じVCで新しく始まった配信を自動視聴します。
@@ -14,6 +16,8 @@
 
 AutoWatchStreamの設定で、次の3つから選択できます。変更は次の自動視聴から反映されます。
 
+![3種類の表示モード](assets/display-modes.svg)
+
 | 設定 | 動作 |
 | --- | --- |
 | フォーカスビュー（初期設定） | 配信中のVC画面を開き、配信を大きく表示 |
@@ -22,12 +26,17 @@ AutoWatchStreamの設定で、次の3つから選択できます。変更は次�
 
 小窓モードではチャット画面を開いて使用してください。別ウィンドウは配信専用の独自プレイヤーではなく、Discordの通話ウィンドウです。
 
-## 導入
+## 導入手順
 
 これは公式プラグイン一覧に含まれない個人用プラグインです。通常のVencordにファイルを置くだけでは使えず、ソースからのビルドが必要です。
 
-1. [Vencordの公式手順](https://docs.vencord.dev/installing/)に従って、Git・Node.js・pnpmとVencordのビルド環境を用意します。
-2. **Vencordフォルダを開いたターミナル**で、以下を実行します。非公開リポジトリのため、GitHubで招待を承認し、そのアカウントでGit認証する必要があります。
+### 1. Vencordの準備
+
+[Vencordの公式手順](https://docs.vencord.dev/installing/)に従って、Git・Node.js・pnpmとVencordのビルド環境を用意します。
+
+### 2. プラグインを追加してビルド
+
+**Vencordフォルダを開いたターミナル**で、以下を順番に実行します。非公開リポジトリのため、先にGitHubの招待を承認し、そのアカウントでGit認証してください。
 
 ```sh
 git clone https://github.com/nobu-nobu/vencord-auto-watch-stream.git src/userplugins/autoWatchStream
@@ -36,9 +45,15 @@ pnpm build --disable-updater
 pnpm inject
 ```
 
-3. Discordを完全終了して起動し直します。
-4. ユーザー設定 → **Plugins** → **AutoWatchStream** をONにします。歯車から表示方法を選びます。
-5. 相手と同じVCへ参加してから、相手に配信を開始してもらいます。
+### 3. Discordで有効化
+
+1. Discordを完全終了して起動し直します。
+2. **ユーザー設定（歯車）**を開きます。
+3. Vencord Settingsの **Plugins** を開きます。
+4. **AutoWatchStream** をONにします。
+5. AutoWatchStreamの歯車から表示モードを選びます。
+
+設定後は、相手と同じVCへ参加してから相手に配信を開始してもらいます。すでに配信中の場合は、一度止めて再開してください。
 
 `--disable-updater`は、公式ビルドへの更新でこのUserPluginが消えることを避けるために指定しています。Vencord本体の更新は手動で行い、更新後に再ビルドしてください。
 
