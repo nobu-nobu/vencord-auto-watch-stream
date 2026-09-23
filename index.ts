@@ -14,11 +14,11 @@ import { ApplicationStreamingStore, ChannelStore, FluxDispatcher, SelectedChanne
 const settings = definePluginSettings({
     displayMode: {
         type: OptionType.SELECT,
-        description: "配信の表示方法（次の自動視聴から反映）",
+        description: "配信の表示モード（次の自動視聴から反映）",
         options: [
-            { label: "Discord内で大きく表示", value: "large" },
-            { label: "チャットのまま右上に小さく表示", value: "mini", default: true },
-            { label: "別ウィンドウで表示", value: "popout" }
+            { label: "フォーカスビュー", value: "large", default: true },
+            { label: "ピクチャー・イン・ピクチャー（PiP）", value: "mini" },
+            { label: "ポップアウトビュー", value: "popout" }
         ]
     }
 });
